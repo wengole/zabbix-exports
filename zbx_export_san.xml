@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>2.0</version>
-    <date>2014-09-30T20:32:36Z</date>
+    <date>2014-10-01T10:31:44Z</date>
     <groups>
         <group>
             <name>Zabbix servers</name>
@@ -488,6 +488,28 @@
             <inventory/>
         </host>
     </hosts>
+    <triggers>
+        <trigger>
+            <expression>{SAN:temperature.py[&quot;k10temp-*&quot;, temp1].avg(5m)}&gt;40</expression>
+            <name>CPU temperature too high</name>
+            <url/>
+            <status>0</status>
+            <priority>4</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>(({SAN:drivetemp.py[sdb].max(5m)}&gt;50 or {SAN:drivetemp.py[sdc].max(5m)}&gt;50 or {SAN:drivetemp.py[sdd].max(5m)}&gt;50 or {SAN:drivetemp.py[sde].max(5m)}&gt;50) and {TRIGGER.VALUE}=0) or (({SAN:drivetemp.py[sdb].max(5m)}&gt;45 or {SAN:drivetemp.py[sdc].max(5m)}&gt;45 or {SAN:drivetemp.py[sdd].max(5m)}&gt;45 or {SAN:drivetemp.py[sde].max(5m)}&gt;45) and {TRIGGER.VALUE}=1)</expression>
+            <name>HDD temperature too high</name>
+            <url/>
+            <status>0</status>
+            <priority>4</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+    </triggers>
     <graphs>
         <graph>
             <name>Speedtest</name>
