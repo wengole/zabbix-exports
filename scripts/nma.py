@@ -7,6 +7,7 @@ import logging
 logger = logging.getLogger('Zabbix NMA script')
 logFile = logging.FileHandler('/tmp/nma-script.log')
 logger.addHandler(logFile)
+logger.setLevel(logging.DEBUG)
 
 apikey = sys.argv[1]
 subject =sys.argv[2]
