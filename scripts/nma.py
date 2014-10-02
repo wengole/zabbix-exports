@@ -1,6 +1,12 @@
 #!/bin/env python2
 import sys
 import requests
+import logging
+
+
+logger = logging.getLogger('Zabbix NMA script')
+logFile = logging.FileHandler('/tmp/nma-script.log')
+logger.addHandler(logFile)
 
 apikey = sys.argv[1]
 subject =sys.argv[2]
@@ -15,6 +21,6 @@ params = {
 }
 r = requests.post('https://www.notifymyandroid.com/publicapi/notify')
 
-print subject
-print message
-print r.status_code
+logger.info(subject)
+logger.info(message)
+logger.info(r.status_code)
